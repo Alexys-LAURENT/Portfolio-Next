@@ -22,12 +22,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className + ' bg-bgLight dark:bg-bgDark'}>
         <Provider>
           <NextUiProvider>
             <ModalProvider>
               <NavBar />
-              <div className='w-full min-h-sceen flex justify-center bg-bgDark'>
+              <div className='w-full min-h-sceen flex justify-center bg-bgLight dark:bg-bgDark'>
                 <div className='w-full max-w-[1500px] px-7'>
                   {children}
                 </div>

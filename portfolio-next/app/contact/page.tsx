@@ -9,11 +9,11 @@ const page = () => {
             {/* Start */}
             <div className="flex flex-col gap-16 items-center justify-center w-full h-[calc(100vh-60px)]">
                 <div className="flex flex-col items-center gap-5">
-                    <h1 className="text-4xl lg:text-6xl font-extrabold">Mes contacts / réseaux</h1>
+                    <h1 className="text-4xl lg:text-6xl font-extrabold text-textDark dark:text-textLight">Mes contacts / réseaux</h1>
                 </div>
                 <div>
                     <Link href='#contact'>
-                        <button className="bg-btnColor px-4 py-2 rounded-md font-semibold hover:scale-105 transition-all">Me contacter</button>
+                        <button className="bg-btnColor px-4 py-2 rounded-md font-semibold hover:scale-105 transition-all text-textLight">Me contacter</button>
                     </Link>
                 </div>
             </div>

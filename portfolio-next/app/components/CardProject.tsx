@@ -10,14 +10,14 @@ const CardProject = ({ projet }: { projet: ProjetType }) => {
     const { onOpen, setModalContent } = useContext(ModalContext);
 
     return (
-        <Button onPress={onOpen} onClick={() => setModalContent(projet)} className='flex w-full h-[250px] rounded-md p-2'>
+        <Button onPress={onOpen} onClick={() => setModalContent(projet)} className='flex w-full h-[250px] rounded-md p-2 bg-white dark:bg-opacity-10'>
             <div className='flex flex-col w-full h-full rounded-md'>
                 <div className='w-full flex items-center justify-start h-[40px]  font-semibold text-base mb-1'><h4>{projet.titre}</h4></div>
-                <hr className=' border-white/25 border-[1.5px]' />
+                <hr className='border-black/10 dark:border-white/25 border-[1.5px]' />
                 <div className='flex overflow-hidden max-w-full w-full h-[170px] '>
                     <p className='text-start break-words whitespace-normal max-w-full w-full h-[125px] mt-3 overflow-hidden font-base text-base text-ellipsis line-clamp-5'>{projet.description}</p>
                 </div>
-                <div className='flex items-center px-2 font-semibold justify-between w-full h-[40px] rounded-md bg-white/40'>
+                <div className='flex items-center px-2 font-semibold justify-between w-full h-[40px] rounded-md bg-black/5 dark:bg-white/40'>
                     <span className=' break-words whitespace-normal max-w-[90%] overflow-hidden text-ellipsis line-clamp-1'>{projet.stacks} </span>
                     {
                         projet.githubLink &&

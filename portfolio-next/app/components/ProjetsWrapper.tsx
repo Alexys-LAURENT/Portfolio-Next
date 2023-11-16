@@ -19,7 +19,7 @@ const ProjetsWrapper = ({ projets }: { projets: ProjetType[] }) => {
             <div className='flex items-center justify-end w-full'>
                 <Select
                     label="Filtrer par type de projet"
-                    className="max-w-xs"
+                    className="max-w-xs "
                     items={allTypes}
                     onChange={handleSelectionChange}
                 >

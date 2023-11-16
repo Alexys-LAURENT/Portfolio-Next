@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *    collectionOperations={
  *       "get"={
  *         "normalization_context"={"groups"={"projets:read"}}
- *      }
+ *      }, "post"={}
  *   }
  * )
  */
