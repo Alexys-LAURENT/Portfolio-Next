@@ -25,6 +25,7 @@ class Projets
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"projets:read"})
      */
     private $id;
 
@@ -48,18 +49,21 @@ class Projets
 
     /**
      * @ORM\OneToMany(targetEntity=TechnosProjets::class, mappedBy="projets")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      * @Groups({"projets:read"})
      */
     private $technos;
 
     /**
      * @ORM\OneToMany(targetEntity=CompetencesProjets::class, mappedBy="projets")
+     *  @ORM\JoinColumn(onDelete="CASCADE")
      * @Groups({"projets:read"})
      */
     private $competences;
 
     /**
      * @ORM\OneToMany(targetEntity=ImagesProjets::class, mappedBy="projets")
+     *  @ORM\JoinColumn(onDelete="CASCADE")
      * @Groups({"projets:read"})
      */
     private $images;
