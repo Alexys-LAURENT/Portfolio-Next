@@ -38,7 +38,7 @@ export default function App() {
           <Alternance alternances={alternances} />
         </Tab>
         <Tab key="projets" title="Projets">
-          <Projets />
+          <Projets projets={projets} />
         </Tab>
       </Tabs>
     </div>

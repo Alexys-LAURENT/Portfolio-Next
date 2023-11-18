@@ -7,6 +7,7 @@ import RefreshApiContextProvider from './context/RefreshApiContext.tsx'
 import DrawerContextProvider from './context/DrawerContext.tsx'
 import DrawerItem from './components/Drawer.tsx'
 
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   // <React.StrictMode>
   <NextUIProvider>

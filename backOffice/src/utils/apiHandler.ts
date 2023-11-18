@@ -1,3 +1,5 @@
+import { CompetenceProjetType, TechnoType } from "../types/ProjetType"
+
 type Entity = 'projets' | 'alternances' | 'competences' | 'competences_projets' | 'experiences' | 'technos_projets' | 'a_propos'
 
 type updateDataType =
@@ -19,7 +21,8 @@ type updateDataType =
     } |
     // competenceProjet
     {
-        "libelle": string
+        "libelle": string,
+        "projets": string
     } |
     // experience
     {
@@ -38,6 +41,7 @@ type updateDataType =
     {
         "titre": string,
         "libelle": string,
+        "projets": string
     }
 
 
@@ -132,4 +136,60 @@ export async function createAlternance(data: { titre: string, description: strin
         .then((res) => res.status === 201 ? true : false)
         .catch((err) => console.log(err))
     return result
+}
+
+export async function createProjet(data: { titre: string, description: string, githubLink?: string, type: string, stacks: string }, projetTechnos: TechnoType[], projetCompetences: CompetenceProjetType[]) {
+
+    try {
+        // Effectuer la requête pour ajouter le projet
+        const result = await fetch(`${import.meta.env.VITE_API_URL}/projets`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/ld+json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        const resultJson = await result.json();
+
+        if (resultJson["@type"] === "hydra:Error") return false;
+
+
+        // Créer un tableau de promesses pour les requêtes de technos
+        const technoPromises = projetTechnos.map(async (element) => {
+            await fetch(`${import.meta.env.VITE_API_URL}/technos_projets`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/ld+json'
+                },
+                body: JSON.stringify({ ...element, projets: `${resultJson["@id"]}` })
+            });
+        });
+
+        // Créer un tableau de promesses pour les requêtes de compétences
+        const competencePromises = projetCompetences.map(async (element) => {
+            await fetch(`${import.meta.env.VITE_API_URL}/competences_projets`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/ld+json'
+                },
+                body: JSON.stringify({ ...element, projets: `${resultJson["@id"]}` })
+            });
+        });
+
+
+        // Attendre que toutes les requêtes de technos soient terminées
+        await Promise.all(technoPromises);
+        await Promise.all(competencePromises);
+
+
+        return true;
+    } catch (err) {
+        console.log(err);
+        return false;
+    }
+
 }

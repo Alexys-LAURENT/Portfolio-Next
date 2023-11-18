@@ -7,7 +7,6 @@ import { Tabs, Tab, Card, CardBody, CardHeader } from "@nextui-org/react";
 import { CompetenceProjetType, TechnoType } from "../types/ProjetType";
 export default function ModalComponent() {
     const { isOpen, onOpenChange, modalContent } = useContext(ModalContext);
-    console.log(modalContent)
     const tab = [
         modalContent && modalContent.description && { id: 'presentation', label: 'Présentation', content: <PresensationContent description={modalContent.description} /> },
         modalContent && modalContent.technos && modalContent.technos.length > 0 && { id: 'technos', label: 'Technos', content: <TechnosContent technos={modalContent.technos} /> },
@@ -52,7 +51,6 @@ function PresensationContent({ description }: { description: string }) {
 }
 
 function CompetencesContent({ competences }: { competences: CompetenceProjetType[] }) {
-    console.log(competences)
     return (
         <div className="flex flex-col gap-4">
             {competences.map((item: CompetenceProjetType) =>

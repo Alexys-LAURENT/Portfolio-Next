@@ -78,7 +78,7 @@ export default function NavBar() {
                                 item.page === pathName ? "primary" : "foreground"
                             }
                             className={`w-full ${item.page === pathName ? "font-bold" : "font-light"} ${item.page != pathName && " text-textDark dark:text-textLight"}`}
-                            href="#"
+                            href={item.page}
                             size="lg"
                         >
                             {item.name}

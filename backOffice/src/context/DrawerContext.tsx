@@ -2,7 +2,7 @@
 import React, { createContext, useState } from "react";
 import { CompétenceType, ExperienceType } from "../types/AProposType";
 
-type DrawerDisplay = "Créer une expérience" | "Modifier une expérience" | "Créer une compétence" | "Modifier une compétence" | "Créer un projet" | "Modifier un projet" | "Modifier une alternance" | "Créer une alternance"
+type DrawerDisplay = "Créer une expérience" | "Modifier une expérience" | "Créer une compétence" | "Modifier une compétence" | "Créer un projet" | "Modifier un projet" | "Modifier une alternance" | "Créer une alternance" | "refresh"
 type DrawerData = ExperienceType | CompétenceType | null
 
 
@@ -28,6 +28,7 @@ const DrawerContextProvider = ({ children }: { children: React.ReactNode }) => {
 
     const closeDrawer = () => {
         setDrawerOpen(false)
+        setDrawerDisplay("refresh")
     }
 
     return (
